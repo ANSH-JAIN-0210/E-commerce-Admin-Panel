@@ -1,0 +1,101 @@
+<app-chart></app-chart>
+<div class="main">
+  <div class="card">
+    <div class="tile-section">
+      <div><h1 class="heading">User Details:</h1></div>
+      <div class="tile">
+        <div class="data" (click)="nav_Users('')">
+          <span>Total User: </span>
+          <div class="value">{{ user?.data?.totalUsers }}</div>
+        </div>
+        <div class="data" (click)="nav_Users('active')">
+          <span>Total Active User: </span>
+          <div class="value">{{ user?.data?.activeUsers }}</div>
+        </div>
+        <div class="data" (click)="nav_Users('inactive')">
+          <span>Total Inactive User: </span>
+          <div class="value">{{ user?.data.inactiveUsers }}</div>
+        </div>
+        <div class="data" (click)="nav_Users('deleted')">
+          <span>Total Deleted User: </span>
+          <div class="value">{{ user?.data.deletedUsers }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile-section">
+      <div><h1 class="heading">Category Details:</h1></div>
+      <div class="tile">
+        <div class="data" (click)="nav_categories('')">
+          <span>Total Category: </span>
+          <div class="value">{{ category?.data?.totalCategories }}</div>
+        </div>
+        <div class="data" (click)="nav_categories('active')">
+          <span>Total Active Category: </span>
+          <div class="value">{{ category?.data?.activeCategories }}</div>
+        </div>
+        <div class="data" (click)="nav_categories('inactive')">
+          <span>Total Inactive Category: </span>
+          <div class="value">{{ category?.data?.inactiveCategories }}</div>
+        </div>
+        <div class="data" (click)="nav_categories('deleted')">
+          <span>Total Deleted Category: </span>
+          <div class="value">{{ category?.data?.deletedCategories }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile-section">
+      <div><h1 class="heading">Product Details:</h1></div>
+
+      <div class="tile">
+        <div class="data" (click)="nav_products('')">
+          <span>Total Product: </span>
+          <div class="value">{{ product?.data?.totalProducts }}</div>
+        </div>
+        <div class="data" (click)="nav_products('active')">
+          <span>Total Active Product: </span>
+          <div class="value">{{ product?.data?.activeProducts }}</div>
+        </div>
+        <div class="data" (click)="nav_products('inactive')">
+          <span>Total Inactive Product: </span>
+          <div class="value">{{ product?.data?.inactiveProducts }}</div>
+        </div>
+        <div class="data" (click)="nav_products('deleted')">
+          <span>Total Deleted Product: </span>
+          <div class="value">{{ product?.data?.deletedProducts }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile-section">
+      <div><h1 class="heading">Order Details:</h1></div>
+      <div class="tile">
+        <div class="data" (click)="nav_orders('')">
+          <span>Total Order: </span>
+          <div class="value">{{ order?.data?.totalOrders }}</div>
+        </div>
+        <div class="data" (click)="nav_orders('pending')">
+          <span>Total Pending Order: </span>
+          <div class="value">{{ order?.data?.pendingOrders }}</div>
+        </div>
+        <div class="data" (click)="nav_orders('processing')">
+          <span>Total Processing Order: </span>
+          <div class="value">{{ order?.data?.processingOrders }}</div>
+        </div>
+        <div class="data" (click)="nav_orders('shipped')">
+          <span>Total Shipped Order: </span>
+          <div class="value">{{ order?.data?.shippedOrders }}</div>
+        </div>
+        <div class="data" (click)="nav_orders('delivered')">
+          <span>Total Delivered Order: </span>
+          <div class="value">{{ order?.data?.deliveredOrders }}</div>
+        </div>
+        <div class="data" (click)="nav_orders('cancelled')">
+          <span>Total Cancelled Order: </span>
+          <div class="value">{{ order?.data?.cancelledOrders }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

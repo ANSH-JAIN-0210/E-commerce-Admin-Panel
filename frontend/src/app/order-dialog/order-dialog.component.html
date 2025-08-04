@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Edit Order</h2>
+
+<div mat-dialog-content>
+  <div class="form-field">
+    <label>Status:</label> 
+    <select [(ngModel)]="data.status">
+      <option value="pending">Pending</option>
+      <option value="processing">Processing</option>
+      <option value="shipped">Shipped</option>
+      <option value="delivered">Delivered</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="data">Save</button>
+</div>

@@ -1,0 +1,97 @@
+<div class="controls">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>search</mat-icon> Search </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <form #searchform="ngForm" (ngSubmit)="getUsers()">
+        <div class="field">
+          <label>User ID:</label>
+          <input
+            placeholder="search user by ID"
+            type="number"
+            name="userId"
+            [(ngModel)]="payload.userId"
+          />
+        </div>
+        <div class="field">
+          <label>Name:</label>
+          <input
+            placeholder="search user by name"
+            type="text"
+            name="name"
+            [(ngModel)]="payload.name"
+          />
+        </div>
+        <div class="field">
+          <label>Email:</label>
+          <input
+            placeholder="search user by email"
+            type="email"
+            name="email"
+            [(ngModel)]="payload.email"
+          />
+        </div>
+        <div class="field">
+          <label>Status:</label>
+          <select name="status" [(ngModel)]="payload.status">
+            <option value="">All</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+            <option value="deleted">Deleted</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Gender:</label>
+          <select name="gender" [(ngModel)]="payload.gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="button-field">
+          <button type="submit" class="search-btn">Search</button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div class="add-fields">
+  <div>
+    <button class="add-btn" (click)="OpenAddUserDialog()">Add User</button>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Select Fields</mat-label>
+    <mat-select
+      [(ngModel)]="selectedFields"
+      multiple
+      (selectionChange)="onFieldSelectionChange()"
+    >
+      <mat-option
+        *ngFor="let field of response?.Users[0] | keyvalue"
+        [value]="field.key"
+      >
+        {{ getLabel(field.key) }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<app-generic-table
+  [data]="response?.Users"
+  [columns]="getFilteredUserColumns()"
+  (edit)="editUser($event)"
+  (delete)="deleteUser($event._id)"
+  [del]="true"
+></app-generic-table>
+
+<div class="paginator-container">
+  <mat-paginator
+    [length]="totalUsers"
+    [pageSize]="pageSize"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

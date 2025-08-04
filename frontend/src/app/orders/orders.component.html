@@ -1,0 +1,65 @@
+<div class="controls">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>search</mat-icon> Search </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form>
+        <div class="field">
+          <label>Order ID:</label>
+          <input
+            placeholder="search order by ID"
+            type="number"
+            name="orderId"
+            [(ngModel)]="search.orderId"
+          />
+        </div>
+
+        <div class="field">
+          <label>Status:</label>
+          <select name="status" [(ngModel)]="search.status">
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="processing">Processing</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Mode of Payment:</label>
+          <select name="mode" [(ngModel)]="search.paymentMethod">
+            <option value="">All</option>
+            <option value="COD">Cash on Delivery</option>
+            <option value="NETBANKING">Net Banking</option>
+            <option value="UPI">UPI</option>
+            <option value="CARD">Card</option>
+          </select>
+        </div>
+        
+        <div class="button-field">
+          <button type="submit" class="search-btn" (click)="getOrders()">
+            Search
+          </button>
+        </div>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<app-generic-table
+  [data]="response?.data"
+  [columns]="orderColumns"
+  [del]="false"
+  (edit)="openEditUserDialog($event._id, $event)"
+></app-generic-table>
+
+<div class="paginator-container">
+  <mat-paginator
+    [length]="totalOrders"
+    [pageSize]="pageSize"
+    (page)="onPageChange($event)"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>

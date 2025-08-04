@@ -1,0 +1,110 @@
+<body>
+  <div class="controls">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>search</mat-icon> Search
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form>
+          <div class="field">
+            <label>Category ID:</label>
+            <input
+              placeholder="search category by ID"
+              type="number"
+              name="categoryId"
+              [(ngModel)]="search.categoryId"
+            />
+          </div>
+          <div class="field">
+            <label>Category Name: </label>
+            <mat-form-field appearance="outline">
+              <mat-select
+                [(ngModel)]="search.name"
+                name="categoryName"
+                (openedChange)="onDropdownOpen($event)"
+              >
+                <mat-option>
+                  <mat-icon>search</mat-icon>
+                  <input
+                    matInput
+                    type="text"
+                    placeholder="Search category"
+                    name="categorySearch"
+                    [(ngModel)]="categoryFilter"
+                    (click)="$event.stopPropagation()"
+                    (keydown)="$event.stopPropagation()"
+                    autocomplete="off"
+                  />
+                </mat-option>
+                <mat-option value="">All</mat-option>
+                <mat-option
+                  *ngFor="
+                    let category of categoryList?.data
+                      | dropdownSearch : categoryFilter
+                  "
+                  [value]="category?.name"
+                >
+                  {{ category?.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="field">
+            <label>Status:</label>
+            <select name="status" [(ngModel)]="search.status">
+              <option value="">All</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+              <option value="deleted">Deleted</option>
+            </select>
+          </div>
+
+          <div class="button-field">
+            <button type="submit" class="search-btn" (click)="getCategories()">
+              Search
+            </button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <div class="add-fields">
+      <div>
+        <button class="add-btn" (click)="openAddDialog()">Add Category</button>
+      </div>
+      <mat-form-field appearance="fill" style="width: auto; min-width: 250px">
+        <mat-label>Select Fields</mat-label>
+        <mat-select
+          [(ngModel)]="selectedFields"
+          multiple
+          (selectionChange)="onFieldSelectionChange()"
+        >
+          <ng-container *ngFor="let field of response[0] | keyvalue">
+            <mat-option *ngIf="getLabel(field.key)" [value]="field.key">
+              {{ getLabel(field.key) }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <app-generic-table
+    [data]="response"
+    [columns]="getFilteredCategorycolumns()"
+    (edit)="openEditDialog($event)"
+    (delete)="openDeleteDialog($event._id)"
+    [del]="true"
+  ></app-generic-table>
+
+  <div class="paginator-container">
+    <mat-paginator
+      [length]="totalCategories"
+      [pageSize]="pageSize"
+      (page)="onPageChange($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+</body>

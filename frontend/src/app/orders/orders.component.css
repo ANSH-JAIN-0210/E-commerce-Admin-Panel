@@ -1,0 +1,151 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.controls mat-expansion-panel {
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.controls mat-expansion-panel-header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.controls mat-expansion-panel-header mat-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.controls form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  align-items: flex-end;
+  background-color: white;
+}
+
+.controls .field {
+  flex: 1 1 200px;
+  min-width: 180px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls .button-field {
+  flex: 1 1 100%;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  padding-top: 16px;
+}
+
+.controls input[type="text"],
+.controls input[type="number"],
+.controls input[type="email"],
+.controls select {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.controls input:focus,
+.controls select:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.controls label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-top: 30px;
+  height: 48px;
+}
+
+.controls .field mat-form-field {
+  margin-top: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.controls .field input,
+.controls .field select,
+.controls .field mat-form-field {
+  height: 56px;
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .controls form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .controls .field,
+  .controls .button-field {
+    flex: 1 1 100%;
+    min-width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .controls .field {
+    flex: 1 1 300px;
+    min-width: 250px;
+  }
+
+  .controls .button-field {
+    justify-content: flex-start;
+  }
+}
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #456882;
+  color: white;
+}
+
+.search-btn:hover {
+  background-color: #1B3C53;
+}
+
+.paginator-container {
+  padding: 16px 0;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+table + .paginator-container {
+  margin-top: 16px;
+}

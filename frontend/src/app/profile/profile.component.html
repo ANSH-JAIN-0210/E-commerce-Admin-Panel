@@ -1,0 +1,26 @@
+<head>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    rel="stylesheet"
+  />
+</head>
+
+<div class="container">
+  <div class="icon-wrapper">
+    <i class="fas fa-user-shield"></i>
+  </div>
+  <div class="details">
+    <div><span>Name: </span> {{ adminData?.admin?.name }}</div>
+
+    <div><span>Email: </span> {{ adminData?.admin?.email }}</div>
+  </div>
+  <div>
+    <button (click)="openEditDialog()">
+      <mat-icon>edit</mat-icon>Edit Profile
+    </button>
+
+    <button *ngIf="editMode === true" (click)="submit()">
+      <mat-icon>send </mat-icon>Save Profile
+    </button>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="chart-container">
+  <div class="button-container">
+    <div class="data-button-container">
+      <div class="btn"><button (click)="setDataType('user')">User</button></div>
+      <div class="btn">
+        <button (click)="setDataType('product')">Product</button>
+      </div>
+      <div class="btn">
+        <button (click)="setDataType('category')">Category</button>
+      </div>
+      <div class="btn">
+        <button (click)="setDataType('order')">Order</button>
+      </div>
+    </div>
+    <div class="chart-button-container">
+      <div class="btn">
+        <button (click)="setChartType('line')">Line</button>
+      </div>
+      <div class="btn">
+        <button (click)="setChartType('column')">Bar</button>
+      </div>
+      <div class="btn">
+        <button (click)="setChartType('area')">Area</button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Filter by</mat-label>
+      <mat-select [(ngModel)]="chartFilter" (selectionChange)="getUsers()">
+        <mat-option value="day">Date</mat-option>
+        <mat-option value="weekly">Week</mat-option>
+        <mat-option value="monthly">Month</mat-option>
+        <mat-option value="yearly">Year</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <highcharts-chart
+    id="chart-container"
+    [Highcharts]="Highcharts"
+    [options]="chartOptions"
+    style="
+      background-color: '#ffffff';
+      width: 100%;
+      height: 400px;
+      display: block;
+    "
+  ></highcharts-chart>
+</div>

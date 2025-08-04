@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Edit Profile</h2>
+<div mat-dialog-content>
+  <div class="form-field">
+    <label>Name:</label> 
+    <input type="text" [(ngModel)]="data.name" />
+  </div>
+  <div class="form-field">
+    <label>Email:</label>
+    <input type="text" [(ngModel)]="data.email" />
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">Cancel</button>
+  <button mat-button color="primary" [mat-dialog-close]="data">Save</button>
+</div>

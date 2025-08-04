@@ -1,0 +1,94 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 94vh;
+  background: linear-gradient(to right, #eef2f7, #ffffff);
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #2c3e50;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-error {
+  font-size: 13px;
+  color: #d32f2f;
+  margin-top: 4px;
+}
+
+p {
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+  margin: 0;
+}
+
+p button {
+  background: none;
+  border: none;
+  color: #1976d2;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+}
+
+p button:hover {
+  text-decoration: underline;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+button[type='submit'] {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+button mat-icon {
+  font-size: 20px;
+}
+
+@media (max-width: 480px) {
+  form {
+    padding: 24px;
+    gap: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,58 @@
+
+<div class="dialog-container">
+  <h2 mat-dialog-title *ngIf="mode === 'add' || mode === 'edit'" class="dialog">
+    {{ mode === "add" ? "Add Category" : "Edit Category" }}
+  </h2>
+  <h2 mat-dialog-title class="delete-dialog" *ngIf="mode === 'delete'">
+    Delete User
+  </h2>
+
+  <div class="mat-dialog-content" mat-dialog-content *ngIf="mode !== 'delete'">
+    <div class="form-field">
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="data.name" />
+    </div>
+    <div class="form-field">
+      <label>Description:</label>
+      <input type="text" [(ngModel)]="data.description" />
+    </div>
+    <div *ngIf="mode === 'edit'" class="form-field">
+      <label>Status:</label>
+      <select [(ngModel)]="data.status">
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+        <option value="deleted0">Deleted</option>
+      </select>
+    </div>
+  </div>
+
+  <mat-dialog-content *ngIf="mode === 'delete'" class="delete-confirmation">
+    <p>Are you sure you want to delete this Category?</p>
+    <p class="warning">This action cannot be undone.</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions
+    align="end"
+    [ngClass]="{ 'delete-actions': mode === 'delete' }"
+  >
+    <button mat-button (click)="closeDialog()">Cancel</button>
+
+    <button
+      *ngIf="mode === 'delete'"
+      mat-button
+      color="warn"
+      (click)="confirmDelete()"
+    >
+      Yes, Delete
+    </button>
+
+    <button
+      *ngIf="mode !== 'delete'"
+      mat-button
+      color="primary"
+      [mat-dialog-close]="data"
+    >
+      {{ mode === "edit" ? "Save" : "Add" }}
+    </button>
+  </mat-dialog-actions>
+</div>

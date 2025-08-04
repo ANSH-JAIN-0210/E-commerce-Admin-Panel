@@ -1,0 +1,98 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title *ngIf="mode === 'add' || mode === 'edit'" class="dialog">
+    {{ mode === "add" ? "Add Product" : "Edit Product" }}
+  </h2>
+  <h2 mat-dialog-title class="delete-dialog" *ngIf="mode === 'delete'">
+    Delete User
+  </h2>
+
+  <div class="mat-dialog-content" mat-dialog-content *ngIf="mode !== 'delete'">
+    <div class="form-field">
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="data.name" />
+    </div>
+    <div class="form-field">
+      <label>Description:</label>
+      <input type="text" [(ngModel)]="data.description" />
+    </div>
+    <div class="form-field">
+      <label>Category:</label>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-select
+          [(ngModel)]="data.categoryName"
+          name="dialogCategoryName"
+          (openedChange)="onDropdownOpen($event)"
+        >
+          <mat-option>
+            <mat-icon>search</mat-icon>
+            <input
+              matInput
+              type="text"
+              placeholder="Search category"
+              name="dialogCategorySearch"
+              [(ngModel)]="categoryFilter"
+              (click)="$event.stopPropagation()"
+              (keydown)="$event.stopPropagation()"
+              autocomplete="off"
+            />
+          </mat-option>
+          <mat-option value="">Select Category</mat-option>
+          <mat-option
+            *ngFor="
+              let category of categoryList?.data | dropdownSearch : categoryFilter
+            "
+            [value]="category?.name"
+          >
+            {{ category?.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <label>Price:</label>
+      <input type="number" [(ngModel)]="data.price" />
+    </div>
+    <div class="form-field">
+      <label>Upload Image:</label>
+      <input type="file" (change)="onImageSelected($event)" />
+    </div>
+    <div *ngIf="mode === 'edit'" class="form-field">
+      <label>Status:</label>
+      <select [(ngModel)]="data.status">
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+    </div>
+  </div>
+
+  <mat-dialog-content *ngIf="mode === 'delete'" class="delete-confirmation">
+    <p>Are you sure you want to delete this product?</p>
+    <p class="warning">This action cannot be undone.</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions
+    align="end"
+    [ngClass]="{ 'delete-actions': mode === 'delete' }"
+  >
+    <button mat-button (click)="closeDialog()">Cancel</button>
+
+    <button
+      *ngIf="mode === 'delete'"
+      mat-button
+      color="warn"
+      (click)="confirmDelete()"
+    >
+      Yes, Delete
+    </button>
+
+    <button
+      *ngIf="mode !== 'delete'"
+      mat-button
+      color="primary"
+      [mat-dialog-close]="data"
+    >
+      {{ mode === "edit" ? "Save" : "Add" }}
+    </button>
+  </mat-dialog-actions>
+</div>

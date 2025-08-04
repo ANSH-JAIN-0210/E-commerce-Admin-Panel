@@ -1,0 +1,271 @@
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-btn,
+.add-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+  border: none;
+  cursor: pointer;
+  background-color: #456882;
+  color: white;
+}
+
+.search-btn:hover,
+.add-btn:hover {
+  background-color: #1B3C53;
+}
+
+.delete-btn {
+  background-color: #e53935;
+  color: #fff;
+  margin: 4px;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+button[mat-icon-button] {
+  padding: 8px;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button[mat-icon-button][color="primary"] {
+  background-color: #456882;
+  color: white;
+}
+
+button[mat-icon-button][color="primary"]:hover {
+  background-color: #1B3C53;
+}
+
+button[mat-icon-button][color="warn"] {
+  background-color: #e53935;
+  color: white;
+}
+
+button[mat-icon-button][color="warn"]:hover {
+  background-color: #d32f2f;
+}
+button:focus {
+  outline: 2px solid #456882;
+  outline-offset: 2px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+  margin-bottom: 40px;
+}
+
+.controls mat-expansion-panel {
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.controls mat-expansion-panel-header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.controls mat-expansion-panel-header mat-icon {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.controls mat-expansion-panel form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 20px;
+  align-items: flex-end;
+  background-color: white;
+}
+
+.controls mat-expansion-panel form .field {
+  flex: 1 1 200px;
+  min-width: 180px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls mat-expansion-panel form .button-field {
+  flex: 1 1 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 16px;
+}
+
+.controls input[type="text"],
+.controls input[type="number"],
+.controls input[type="email"],
+.controls select {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.controls input[type="text"]:focus,
+.controls input[type="number"]:focus,
+.controls input[type="email"]:focus,
+.controls select:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+}
+
+.controls label,
+mat-expansion-panel label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.add-user-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.paginator-container {
+  padding: 16px 0;
+  display: flex;
+  margin-bottom: 50px;
+  justify-content: flex-end;
+}
+
+table + .paginator-container {
+  margin-top: 16px;
+}
+
+.error-message {
+  padding: 12px;
+  margin: 10px 0;
+  background: #ffeaea;
+  color: #d32f2f;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.example-tooltip-uppercase {
+  text-transform: uppercase;
+}
+
+.example-button {
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .controls mat-expansion-panel form {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .controls mat-expansion-panel form .field {
+    flex: 1 1 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .controls mat-expansion-panel form .button-field {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    padding-top: 12px;
+  }
+
+  .add-user-container {
+    justify-content: center;
+  }
+
+  .search-btn,
+  .add-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  button[mat-icon-button] {
+    min-width: 36px;
+    height: 36px;
+    padding: 6px;
+  }
+
+  .paginator-container {
+    justify-content: center;
+    padding: 20px 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .controls mat-expansion-panel form .field {
+    flex: 1 1 300px;
+    min-width: 250px;
+  }
+
+  .controls mat-expansion-panel form .button-field {
+    justify-content: flex-start;
+  }
+}
+
+button:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+}
+
+@media (prefers-contrast: high) {
+  button {
+    border: 2px solid #000;
+  }
+}
+.add-fields {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.add-fields select {
+  margin: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

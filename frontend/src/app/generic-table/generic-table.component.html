@@ -1,0 +1,58 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns">{{ column.label }}</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of data">
+      <td *ngFor="let column of columns" [attr.data-label]="column.label">
+        <ng-container *ngIf="column.key !== 'imageUrl'; else imageCell">
+          <span [matTooltip]="getValueByPath(row, column.key)">
+            <ng-container [ngSwitch]="column.type">
+              <ng-container *ngSwitchCase="'date'">
+                {{ getValueByPath(row, column.key) | date : "longDate" }}
+              </ng-container>
+              <ng-container *ngSwitchDefault>
+                {{ getValueByPath(row, column.key) + "" | slice : 0 : 20 }}
+                <span *ngIf="(getValueByPath(row, column.key) + '').length > 20"
+                  >...</span
+                >
+              </ng-container>
+            </ng-container>
+          </span>
+        </ng-container>
+
+        <ng-template #imageCell>
+          <img
+            [src]="getValueByPath(row, column.key)"
+            [matTooltip]="getValueByPath(row, column.key)"
+            alt="image"
+            width="50px"
+            height="50px"
+          />
+        </ng-template>
+      </td>
+      <td data-label="Actions">
+        <button
+          class="icon-button"
+          mat-icon-button
+          color="primary"
+          (click)="edit.emit(row)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+        *ngIf="del === true"
+          class="icon-button"
+          mat-icon-button
+          color="warn"
+          (click)="delete.emit(row)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

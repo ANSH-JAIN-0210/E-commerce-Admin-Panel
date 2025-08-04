@@ -1,0 +1,166 @@
+:host {
+  display: block;
+  font-family: "Inter", "Poppins", "Segoe UI", sans-serif;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 0.3s ease-out;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.dialog-container {
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.mat-dialog-content {
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 16px;
+  box-sizing: border-box;
+  max-height: none;
+  overflow: hidden; 
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #dfe3e8;
+  border-radius: 10px;
+  background: #f9fafc;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+  border-color: #456882;
+  box-shadow: 0 0 0 2px rgba(92, 107, 192, 0.15);
+  background: #fff;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #fbfcfd;
+  flex-wrap: wrap;
+}
+
+button[mat-button] {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: capitalize;
+  min-width: 90px;
+}
+
+button[mat-button][color="primary"] {
+  background-color: #456882;
+  color: white;
+}
+
+button[mat-button][color="warn"] {
+  background: linear-gradient(145deg, #f44336, #d32f2f);
+  color: white;
+}
+
+button[mat-button]:not([color="primary"]):not([color="warn"]) {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.dialog {
+  padding: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background: #1B3C53;
+  margin-bottom: 10px;
+}
+
+.delete-dialog {
+  background-color: #c62828;
+  color: white;
+  font-size: 22px;
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+mat-dialog-content.delete-confirmation {
+  width: fit-content;
+  padding: 16px 18px;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+mat-dialog-content.delete-confirmation .warning {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+mat-dialog-actions.delete-actions {
+  justify-content: center;
+  gap: 16px;
+}
+
+mat-dialog-actions.delete-actions button {
+  margin: 0 8px;
+}
+
+@media (max-width: 600px) {
+  .mat-dialog-content {
+    grid-template-columns: 1fr;
+  }
+
+  mat-dialog-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  mat-dialog-actions.delete-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  button[mat-button] {
+    width: 100%;
+  }
+
+  mat-dialog-actions.delete-actions button {
+    width: auto;
+    flex: 1;
+  }
+}

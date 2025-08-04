@@ -1,0 +1,215 @@
+:host {
+  display: block;
+  padding: 0;
+  font-family: "Inter", "Poppins", "Segoe UI", sans-serif;
+  /* background: #ffffff; */
+  border-radius: 18px;
+  overflow: hidden;
+  /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12); */
+  min-width: 300px;
+  max-width: 500px;
+  width: 100%;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.dialog {
+  margin-bottom: 10px;
+  padding: 16px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  background: #1B3C53;
+  /* box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1); */
+}
+.delete-dialog {
+  background-color: #c62828;
+  margin-bottom: 10px;
+  padding: 16px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+
+mat-dialog-content {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 12px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.3px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select {
+  padding: 14px 18px;
+  font-size: 15px;
+  border: 1px solid #dfe3e8;
+  border-radius: 12px;
+  outline: none;
+  background: #f9fafc;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: #5c6bc0;
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.15);
+  background: #ffffff;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg fill='%23666' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 12l-4-4h8l-4 4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+  cursor: pointer;
+}
+
+mat-dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 28px;
+  background-color: #fbfcfd;
+  border-top: 1px solid #e3e7ea;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+button[mat-button] {
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 10px;
+  text-transform: capitalize;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0;
+  min-width: 100px;
+}
+
+button[mat-button][color="primary"] {
+  background: #456882;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(92, 107, 192, 0.35);
+}
+
+button[mat-button][color="primary"]:hover {
+  background: #456882;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(63, 81, 181, 0.5);
+}
+
+button[mat-button][color="warn"] {
+  background: linear-gradient(145deg, #f44336, #d32f2f);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.35);
+}
+
+button[mat-button][color="warn"]:hover {
+  background: linear-gradient(145deg, #d32f2f, #c62828);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(211, 47, 47, 0.5);
+}
+
+button[mat-button]:not([color="primary"]):not([color="warn"]) {
+  background-color: #eceff1;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+button[mat-button]:not([color="primary"]):not([color="warn"]):hover {
+  background-color: #d6dbe0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+mat-dialog-content.delete-confirmation {
+  width: fit-content;
+  padding: 16px 18px;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow: hidden;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+mat-dialog-content.delete-confirmation .warning {
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 14px;
+}
+mat-dialog-actions.delete-actions {
+  justify-content: center;
+  gap: 16px;
+}
+
+mat-dialog-actions.delete-actions button {
+  margin: 0 8px;
+}
+
+@media (max-width: 480px) {
+  :host {
+    min-width: unset;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 22px;
+    padding: 20px;
+  }
+
+  mat-dialog-content {
+    padding: 20px;
+  }
+
+  mat-dialog-actions {
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  mat-dialog-actions.delete-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  button[mat-button] {
+    width: 100%;
+  }
+
+  mat-dialog-actions.delete-actions button {
+    width: auto;
+    flex: 1;
+  }
+}
